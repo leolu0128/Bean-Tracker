@@ -12,6 +12,7 @@ data class BeanInput(
     val variety: String,
     val processes: List<String>,
     val roastLevel: Int?,
+    val note: String,
     val grams: Int,
     val roastDate: Long?,
 )
@@ -64,6 +65,7 @@ class BeanRepository(private val db: AppDatabase, val covers: CoverStore) {
                 variety = input.variety,
                 processes = input.processes,
                 roastLevel = input.roastLevel,
+                note = input.note,
                 grams = input.grams.coerceAtLeast(0),
                 roastDate = input.roastDate,
                 createdAt = previous?.createdAt ?: now,

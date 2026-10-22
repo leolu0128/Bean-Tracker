@@ -35,6 +35,8 @@
     <string name="field_process">Process</string>
     <string name="field_roast_date">Roast date</string>
     <string name="field_roast_level">Roast level</string>
+    <string name="field_note">Notes</string>
+    <string name="note_hint">Tasting notes, brew recipe…</string>
     <string-array name="roast_levels">
         <item>Light</item>
         <item>Medium-light</item>

@@ -33,6 +33,8 @@ data class Bean(
     val processes: List<String>,
     /** Index into the roast_levels string array (light to dark), or null when unknown. */
     val roastLevel: Int?,
+    /** Free-form notes, e.g. tasting notes or brew recipe. */
+    @ColumnInfo(defaultValue = "") val note: String,
     val grams: Int,
     /** LocalDate epoch day, or null when unknown. */
     val roastDate: Long?,

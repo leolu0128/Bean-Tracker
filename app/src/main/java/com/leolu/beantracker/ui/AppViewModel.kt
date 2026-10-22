@@ -219,7 +219,8 @@ private fun BeanItem.matches(terms: List<String>, f: Filters, levels: Array<Stri
         bean.countries.forEach { append(it).append(' ') }
         append(bean.region).append(' ').append(bean.farm).append(' ').append(bean.variety).append(' ')
         bean.processes.forEach { append(it).append(' ') }
-        bean.roastLevel?.let { levels.getOrNull(it) }?.let { append(it) }
+        bean.roastLevel?.let { levels.getOrNull(it) }?.let { append(it).append(' ') }
+        append(bean.note)
     }.lowercase()
     return terms.all { it in haystack }
 }

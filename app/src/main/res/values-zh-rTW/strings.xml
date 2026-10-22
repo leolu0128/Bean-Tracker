@@ -35,6 +35,8 @@
     <string name="field_process">處理法</string>
     <string name="field_roast_date">烘焙日期</string>
     <string name="field_roast_level">烘焙度</string>
+    <string name="field_note">筆記</string>
+    <string name="note_hint">風味筆記、沖煮參數…</string>
     <string-array name="roast_levels">
         <item>淺焙</item>
         <item>淺中焙</item>

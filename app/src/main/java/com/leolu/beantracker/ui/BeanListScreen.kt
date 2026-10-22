@@ -66,6 +66,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -320,6 +321,16 @@ private fun BeanCard(
                     DetailLine(listOf(if (bean.name.isNotBlank()) countries else "", bean.region, bean.farm))
                     val roastLevel = bean.roastLevel?.let { stringArrayResource(R.array.roast_levels).getOrNull(it) }
                     DetailLine(listOf(bean.variety, bean.processes.joinToString(" / "), roastLevel.orEmpty()))
+                    if (bean.note.isNotBlank()) {
+                        Text(
+                            bean.note,
+                            style = MaterialTheme.typography.bodySmall,
+                            fontStyle = FontStyle.Italic,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
                     bean.roastDate?.let { day ->
                         val age = LocalDate.now().toEpochDay() - day
                         DetailLine(

@@ -110,6 +110,7 @@ class ScreenshotTest {
             variety: String = "",
             processes: List<String>,
             roastLevel: Int? = null,
+            note: String = "",
             grams: Int,
             roastedDaysAgo: Long?,
         ) = BeanInput(
@@ -122,6 +123,7 @@ class ScreenshotTest {
             variety = variety,
             processes = processes,
             roastLevel = roastLevel,
+            note = note,
             grams = grams,
             roastDate = roastedDaysAgo?.let { today - it },
         )
@@ -134,9 +136,9 @@ class ScreenshotTest {
             delay(5)
             repo.save(bean("Morning Roasters", "Panama Geisha", listOf("Panama"), "Boquete", "Elida Estate", "Geisha", listOf("Natural"), 0, 35, 7), morning)
             delay(5)
-            repo.save(bean("Little Fox Coffee", "House Blend", listOf("Brazil", "Colombia"), variety = "Bourbon / Caturra", processes = listOf("Natural", "Washed"), roastLevel = 3, grams = 240, roastedDaysAgo = 12), null)
+            repo.save(bean("Little Fox Coffee", "House Blend", listOf("Brazil", "Colombia"), variety = "Bourbon / Caturra", processes = listOf("Natural", "Washed"), roastLevel = 3, note = "Chocolate, nutty — great for espresso", grams = 240, roastedDaysAgo = 12), null)
             delay(5)
-            repo.save(bean("Morning Roasters", "Guji Hambela", listOf("Ethiopia"), "Guji", "Hambela", "Heirloom", listOf("Washed"), 1, 200, 10), null)
+            repo.save(bean("Morning Roasters", "Guji Hambela", listOf("Ethiopia"), "Guji", "Hambela", "Heirloom", listOf("Washed"), 1, "Jasmine, peach, black tea. 15g : 240ml, 92°C", 200, 10), null)
             delay(5)
             val top = repo.currentItems().first().bean.id
             repo.adjust(top, -15)
