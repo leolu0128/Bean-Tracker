@@ -38,5 +38,7 @@ jobs:
             echo "Screenshots unchanged"
           else
             git commit -m "Update README screenshots"
-            git push
+            # main may have moved while rendering; screenshots never conflict with code.
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
