@@ -113,13 +113,13 @@ fun BeanListScreen(vm: AppViewModel) {
                 }
                 PrimaryTabRow(selectedTabIndex = vm.tab.ordinal) {
                     Tab(
-                        selected = vm.tab == Tab.Active,
-                        onClick = { vm.selectTab(Tab.Active) },
+                        selected = vm.tab == ListTab.Active,
+                        onClick = { vm.selectTab(ListTab.Active) },
                         text = { Text(stringResource(R.string.tab_active, state.active.size)) },
                     )
                     Tab(
-                        selected = vm.tab == Tab.Finished,
-                        onClick = { vm.selectTab(Tab.Finished) },
+                        selected = vm.tab == ListTab.Finished,
+                        onClick = { vm.selectTab(ListTab.Finished) },
                         text = { Text(stringResource(R.string.tab_finished, state.finished.size)) },
                     )
                 }
@@ -131,7 +131,7 @@ fun BeanListScreen(vm: AppViewModel) {
             }
         },
     ) { padding ->
-        val list = if (vm.tab == Tab.Active) state.active else state.finished
+        val list = if (vm.tab == ListTab.Active) state.active else state.finished
         Box(
             Modifier
                 .fillMaxSize()
@@ -143,7 +143,7 @@ fun BeanListScreen(vm: AppViewModel) {
                 list.isEmpty() -> EmptyMessage(
                     when {
                         query.isNotBlank() || filters.count > 0 -> R.string.empty_search
-                        vm.tab == Tab.Active -> R.string.empty_active
+                        vm.tab == ListTab.Active -> R.string.empty_active
                         else -> R.string.empty_finished
                     },
                 )

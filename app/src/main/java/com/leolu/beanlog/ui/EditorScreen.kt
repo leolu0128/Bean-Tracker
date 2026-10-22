@@ -226,7 +226,7 @@ private fun CoverPicker(vm: AppViewModel, e: EditorState, savedCover: String?) {
                     val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", vm.cameraFile())
                     try {
                         camera.launch(uri)
-                    } catch (_: ActivityNotFoundException) {
+                    } catch (ex: ActivityNotFoundException) {
                         e.coverFailed = true
                     }
                 }) {

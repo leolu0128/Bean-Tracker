@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-enum class Tab { Active, Finished }
+enum class ListTab { Active, Finished }
 
 data class Filters(
     val roasters: Set<String> = emptySet(),
@@ -60,7 +60,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     var themeMode by mutableStateOf(prefs.themeMode)
         private set
 
-    var tab by mutableStateOf(Tab.Active)
+    var tab by mutableStateOf(ListTab.Active)
         private set
 
     var editor by mutableStateOf<EditorState?>(null)
@@ -122,7 +122,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun selectTab(value: Tab) {
+    fun selectTab(value: ListTab) {
         if (tab == value) return
         tab = value
         refreshOrder()
