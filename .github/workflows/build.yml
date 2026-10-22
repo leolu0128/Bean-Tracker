@@ -49,6 +49,12 @@ jobs:
           fi
           cp app/build/outputs/apk/release/app-release.apk "BeanTracker-1.0.${{ github.run_number }}.apk"
 
+      - name: Show signing certificate
+        run: |
+          apksigner=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
+          sha=$("$apksigner" verify --print-certs BeanTracker-*.apk | grep -m1 "SHA-256 digest" | awk '{print $NF}')
+          echo "::notice title=Signing certificate SHA-256::$sha"
+
       - uses: actions/upload-artifact@v4
         with:
           name: BeanTracker-1.0.${{ github.run_number }}
@@ -56,7 +62,7 @@ jobs:
 
   release:
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     permissions:
       contents: write
