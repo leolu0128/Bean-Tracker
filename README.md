@@ -1,4 +1,4 @@
-# Bean Log 豆量紀錄
+# Bean Tracker
 
 Android app for tracking how much of each bag of coffee beans is left.
 記錄每包咖啡豆剩餘克數的 Android App。

@@ -40,17 +40,17 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew --no-daemon assembleRelease
-          cp app/build/outputs/apk/release/app-release.apk "BeanLog-1.0.${{ github.run_number }}.apk"
+          cp app/build/outputs/apk/release/app-release.apk "BeanTracker-1.0.${{ github.run_number }}.apk"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: BeanLog-1.0.${{ github.run_number }}
-          path: BeanLog-*.apk
+          name: BeanTracker-1.0.${{ github.run_number }}
+          path: BeanTracker-*.apk
 
       - name: Publish release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
-          name: Bean Log 1.0.${{ github.run_number }}
-          files: BeanLog-*.apk
+          name: Bean Tracker 1.0.${{ github.run_number }}
+          files: BeanTracker-*.apk

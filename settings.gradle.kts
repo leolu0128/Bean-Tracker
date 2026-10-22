@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "BeanLog"
+rootProject.name = "BeanTracker"
 include(":app")

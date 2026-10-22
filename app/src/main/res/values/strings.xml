@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bean Log</string>
+    <string name="app_name">Bean Tracker</string>
     <string name="tab_active">In stock (%1$d)</string>
     <string name="tab_finished">Finished (%1$d)</string>
     <string name="add_bean">Add beans</string>

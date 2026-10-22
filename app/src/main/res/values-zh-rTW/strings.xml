@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">豆量紀錄</string>
+    <string name="app_name">Bean Tracker</string>
     <string name="tab_active">庫存 (%1$d)</string>
     <string name="tab_finished">已喝完 (%1$d)</string>
     <string name="add_bean">新增豆子</string>
