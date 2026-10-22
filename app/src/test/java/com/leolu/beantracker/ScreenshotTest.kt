@@ -132,9 +132,9 @@ class ScreenshotTest {
             // Saved oldest first, since the list shows the most recently used on top.
             repo.save(bean("Little Fox Coffee", "Yunnan Catimor", listOf("China"), "Pu'er", processes = listOf("Honey"), grams = 0, roastedDaysAgo = 40), fox)
             delay(5)
-            repo.save(bean("Hill & Bean", "", listOf("Kenya"), "Nyeri", "Gatomboya", "SL28 / SL34", listOf("Washed"), 1, 120, 18), hill)
+            repo.save(bean("Hill & Bean", "", listOf("Kenya"), "Nyeri", "Gatomboya", "SL28 / SL34", listOf("Washed"), 1, "", 120, 18), hill)
             delay(5)
-            repo.save(bean("Morning Roasters", "Panama Geisha", listOf("Panama"), "Boquete", "Elida Estate", "Geisha", listOf("Natural"), 0, 35, 7), morning)
+            repo.save(bean("Morning Roasters", "Panama Geisha", listOf("Panama"), "Boquete", "Elida Estate", "Geisha", listOf("Natural"), 0, "", 35, 7), morning)
             delay(5)
             repo.save(bean("Little Fox Coffee", "House Blend", listOf("Brazil", "Colombia"), variety = "Bourbon / Caturra", processes = listOf("Natural", "Washed"), roastLevel = 3, note = "Chocolate, nutty — great for espresso", grams = 240, roastedDaysAgo = 12), null)
             delay(5)
