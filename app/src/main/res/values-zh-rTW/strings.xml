@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">豆量紀錄</string>
+    <string name="tab_active">庫存 (%1$d)</string>
+    <string name="tab_finished">已喝完 (%1$d)</string>
+    <string name="add_bean">新增豆子</string>
+    <string name="edit_bean">編輯豆子</string>
+    <string name="new_bean">新增豆子</string>
+    <string name="search">搜尋</string>
+    <string name="search_hint">搜尋店家、產地、品種…</string>
+    <string name="clear">清除</string>
+    <string name="filter">篩選</string>
+    <string name="filter_clear_all">全部清除</string>
+    <string name="more">更多</string>
+    <string name="back">返回</string>
+    <string name="theme">主題</string>
+    <string name="theme_system">跟隨系統</string>
+    <string name="theme_light">淺色</string>
+    <string name="theme_dark">深色</string>
+    <string name="undo">復原</string>
+    <string name="grams_value">%1$d g</string>
+    <string name="finished_label">已喝完</string>
+    <string name="empty_active">還沒有豆子。\n點 + 新增第一包吧。</string>
+    <string name="empty_finished">還沒有喝完的豆子。</string>
+    <string name="empty_search">找不到符合的豆子。</string>
+    <string name="roast_date_days">烘焙 %1$s · 第 %2$d 天</string>
+    <string name="roast_date_future">烘焙 %1$s</string>
+
+    <string name="field_roaster">店家 *</string>
+    <string name="field_name">品名</string>
+    <string name="field_country">國家</string>
+    <string name="field_region">產地</string>
+    <string name="field_farm">莊園</string>
+    <string name="field_variety">品種</string>
+    <string name="field_process">處理法</string>
+    <string name="field_roast_date">烘焙日期</string>
+    <string name="field_grams">剩餘克數 (g)</string>
+    <string name="multi_hint">按 Enter 加入，配方豆可加入多個</string>
+    <string name="name_or_country_hint">品名或國家至少填一項</string>
+    <string name="error_roaster">請填寫店家</string>
+    <string name="error_name_or_country">請填寫品名或至少一個國家</string>
+    <string name="add_value">加入</string>
+    <string name="remove_value">移除 %1$s</string>
+    <string name="cover">封面</string>
+    <string name="cover_gallery">相簿</string>
+    <string name="cover_camera">拍照</string>
+    <string name="cover_shared_hint">封面會套用到這間店家的所有豆子</string>
+    <string name="cover_reused_hint">已沿用這間店家的封面</string>
+    <string name="cover_failed">無法讀取這張圖片</string>
+    <string name="pick_date">選擇日期</string>
+    <string name="ok">確定</string>
+    <string name="cancel">取消</string>
+    <string name="save">儲存</string>
+    <string name="delete">刪除</string>
+    <string name="delete_confirm_title">要刪除這包豆子嗎？</string>
+    <string name="delete_confirm_body">刪除後無法復原。</string>
+</resources>

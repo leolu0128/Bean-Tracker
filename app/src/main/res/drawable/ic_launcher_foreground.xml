@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- A weight with a coffee bean, scaled to fit the adaptive icon safe zone. -->
+    <group
+        android:scaleX="0.034"
+        android:scaleY="0.034"
+        android:translateX="21.16"
+        android:translateY="22.55">
+        <path
+            android:strokeColor="#FF000000"
+            android:strokeWidth="42"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M553,618 H1380 Q1430,618 1437,668 L1580,1580 Q1585,1630 1530,1630 H405 Q350,1630 352,1580 L495,668 Q503,618 553,618 Z" />
+        <path
+            android:strokeColor="#FF000000"
+            android:strokeWidth="42"
+            android:strokeLineCap="round"
+            android:pathData="M838,580 A190,190 0 1,1 1094,580" />
+        <path
+            android:strokeColor="#FF000000"
+            android:strokeWidth="42"
+            android:strokeLineCap="round"
+            android:pathData="M861,540 A149,149 0 1,1 1071,540" />
+        <path
+            android:strokeColor="#FF000000"
+            android:strokeWidth="42"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M880,605 L915,515 Q925,500 940,500 H995 Q1010,500 1018,515 L1052,605" />
+        <path
+            android:fillColor="#FF000000"
+            android:pathData="M1100,885 C1000,840 860,880 790,1000 C720,1110 730,1220 775,1280 Q790,1295 805,1285 C870,1245 920,1200 945,1110 C975,1000 1030,950 1095,910 Q1110,895 1100,885 Z" />
+        <path
+            android:fillColor="#FF000000"
+            android:pathData="M1140,935 C1200,1010 1200,1160 1110,1260 C1030,1345 920,1365 840,1330 Q825,1320 835,1305 C890,1270 960,1220 985,1110 C1010,1010 1070,970 1135,935 Z" />
+    </group>
+</vector>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bean Log</string>
+    <string name="tab_active">In stock (%1$d)</string>
+    <string name="tab_finished">Finished (%1$d)</string>
+    <string name="add_bean">Add beans</string>
+    <string name="edit_bean">Edit beans</string>
+    <string name="new_bean">New beans</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search roaster, origin, variety…</string>
+    <string name="clear">Clear</string>
+    <string name="filter">Filter</string>
+    <string name="filter_clear_all">Clear all</string>
+    <string name="more">More</string>
+    <string name="back">Back</string>
+    <string name="theme">Theme</string>
+    <string name="theme_system">Follow system</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="undo">Undo</string>
+    <string name="grams_value">%1$d g</string>
+    <string name="finished_label">Finished</string>
+    <string name="empty_active">No beans yet.\nTap + to add your first bag.</string>
+    <string name="empty_finished">Nothing finished yet.</string>
+    <string name="empty_search">No beans match.</string>
+    <string name="roast_date_days">Roasted %1$s · %2$d days</string>
+    <string name="roast_date_future">Roasted %1$s</string>
+
+    <string name="field_roaster">Roaster *</string>
+    <string name="field_name">Name</string>
+    <string name="field_country">Country</string>
+    <string name="field_region">Region</string>
+    <string name="field_farm">Farm</string>
+    <string name="field_variety">Variety</string>
+    <string name="field_process">Process</string>
+    <string name="field_roast_date">Roast date</string>
+    <string name="field_grams">Remaining (g)</string>
+    <string name="multi_hint">Press enter to add; add several for blends</string>
+    <string name="name_or_country_hint">Fill in a name or at least one country</string>
+    <string name="error_roaster">Roaster is required</string>
+    <string name="error_name_or_country">Enter a name or at least one country</string>
+    <string name="add_value">Add</string>
+    <string name="remove_value">Remove %1$s</string>
+    <string name="cover">Cover</string>
+    <string name="cover_gallery">Gallery</string>
+    <string name="cover_camera">Camera</string>
+    <string name="cover_shared_hint">The cover is shared by every bean from this roaster</string>
+    <string name="cover_reused_hint">Using the saved cover for this roaster</string>
+    <string name="cover_failed">Couldn\'t load that image</string>
+    <string name="pick_date">Pick date</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirm_title">Delete these beans?</string>
+    <string name="delete_confirm_body">This can\'t be undone.</string>
+</resources>
