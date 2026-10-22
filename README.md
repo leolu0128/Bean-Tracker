@@ -13,6 +13,10 @@ Android app for tracking how much of each bag of coffee beans is left.
 - Sorted by most recent use, with search and filters by roaster, country and process
 - Light/dark theme (follow system or set by hand), English and Traditional Chinese
 
+## License
+
+MIT, see [LICENSE](LICENSE).
+
 ## Build
 
 Every push to `main` builds a signed release APK in GitHub Actions and attaches it to a GitHub release.

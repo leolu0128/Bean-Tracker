@@ -1,4 +1,4 @@
-package com.leolu.beanlog
+package com.leolu.beantracker
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,11 +11,11 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.DisposableEffect
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
-import com.leolu.beanlog.ui.AppViewModel
-import com.leolu.beanlog.ui.BeanListScreen
-import com.leolu.beanlog.ui.BeanLogTheme
-import com.leolu.beanlog.ui.EditorScreen
-import com.leolu.beanlog.ui.isDark
+import com.leolu.beantracker.ui.AppViewModel
+import com.leolu.beantracker.ui.BeanListScreen
+import com.leolu.beantracker.ui.BeanTrackerTheme
+import com.leolu.beantracker.ui.EditorScreen
+import com.leolu.beantracker.ui.isDark
 
 class MainActivity : ComponentActivity() {
     private val vm: AppViewModel by viewModels()
@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                 enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
                 onDispose {}
             }
-            BeanLogTheme(dark) {
+            BeanTrackerTheme(dark) {
                 // Re-sort by most recent use whenever the app comes back to the foreground.
                 LifecycleEventEffect(Lifecycle.Event.ON_START) { vm.refreshOrder() }
                 val editor = vm.editor

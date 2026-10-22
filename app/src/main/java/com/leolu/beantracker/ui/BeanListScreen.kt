@@ -1,4 +1,4 @@
-package com.leolu.beanlog.ui
+package com.leolu.beantracker.ui
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -70,9 +70,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.leolu.beanlog.R
-import com.leolu.beanlog.data.BeanItem
-import com.leolu.beanlog.data.ThemeMode
+import com.leolu.beantracker.R
+import com.leolu.beantracker.data.BeanItem
+import com.leolu.beantracker.data.ThemeMode
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle

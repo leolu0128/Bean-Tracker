@@ -1,4 +1,4 @@
-package com.leolu.beanlog.ui
+package com.leolu.beantracker.ui
 
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.background
@@ -40,7 +40,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.leolu.beanlog.R
+import com.leolu.beantracker.R
 import java.io.File
 
 @Composable

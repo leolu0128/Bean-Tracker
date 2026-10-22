@@ -1,4 +1,4 @@
-package com.leolu.beanlog.ui
+package com.leolu.beantracker.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -6,7 +6,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.leolu.beanlog.data.ThemeMode
+import com.leolu.beantracker.data.ThemeMode
 
 private val LightColors = lightColorScheme(
     primary = Color(0xFF6F4E37),
@@ -46,6 +46,6 @@ fun isDark(mode: ThemeMode): Boolean = when (mode) {
 }
 
 @Composable
-fun BeanLogTheme(dark: Boolean, content: @Composable () -> Unit) {
+fun BeanTrackerTheme(dark: Boolean, content: @Composable () -> Unit) {
     MaterialTheme(colorScheme = if (dark) DarkColors else LightColors, content = content)
 }

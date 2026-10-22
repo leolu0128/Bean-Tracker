@@ -1,4 +1,4 @@
-package com.leolu.beanlog.data
+package com.leolu.beantracker.data
 
 import android.content.Context
 import androidx.room.Database
@@ -13,6 +13,6 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         fun create(context: Context): AppDatabase =
-            Room.databaseBuilder(context, AppDatabase::class.java, "beanlog.db").build()
+            Room.databaseBuilder(context, AppDatabase::class.java, "beantracker.db").build()
     }
 }

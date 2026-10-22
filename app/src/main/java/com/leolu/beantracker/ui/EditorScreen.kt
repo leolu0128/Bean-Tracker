@@ -1,4 +1,4 @@
-package com.leolu.beanlog.ui
+package com.leolu.beantracker.ui
 
 import android.content.ActivityNotFoundException
 import android.net.Uri
@@ -58,7 +58,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.leolu.beanlog.R
+import com.leolu.beantracker.R
 
 private const val DAY_MILLIS = 86_400_000L
 

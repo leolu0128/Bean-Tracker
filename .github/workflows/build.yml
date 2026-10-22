@@ -6,8 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Read-only by default; only the release job below may write.
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -53,8 +54,18 @@ jobs:
           name: BeanTracker-1.0.${{ github.run_number }}
           path: BeanTracker-*.apk
 
+  release:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: BeanTracker-1.0.${{ github.run_number }}
+
       - name: Publish release
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}

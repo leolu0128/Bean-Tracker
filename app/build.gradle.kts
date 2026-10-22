@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.leolu.beanlog"
+    namespace = "com.leolu.beantracker"
     compileSdk = 35
 
     defaultConfig {

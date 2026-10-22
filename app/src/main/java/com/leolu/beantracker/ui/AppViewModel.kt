@@ -1,4 +1,4 @@
-package com.leolu.beanlog.ui
+package com.leolu.beantracker.ui
 
 import android.app.Application
 import android.net.Uri
@@ -7,9 +7,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.leolu.beanlog.BeanLogApp
-import com.leolu.beanlog.data.BeanItem
-import com.leolu.beanlog.data.ThemeMode
+import com.leolu.beantracker.BeanTrackerApp
+import com.leolu.beantracker.data.BeanItem
+import com.leolu.beantracker.data.ThemeMode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -54,8 +54,8 @@ data class Suggestions(
 private data class Order(val active: List<Long>, val finished: List<Long>)
 
 class AppViewModel(app: Application) : AndroidViewModel(app) {
-    private val repo = (app as BeanLogApp).repository
-    private val prefs = (app as BeanLogApp).prefs
+    private val repo = (app as BeanTrackerApp).repository
+    private val prefs = (app as BeanTrackerApp).prefs
 
     var themeMode by mutableStateOf(prefs.themeMode)
         private set
