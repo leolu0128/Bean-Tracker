@@ -31,6 +31,8 @@ data class Bean(
     val variety: String,
     /** Several entries for blends. */
     val processes: List<String>,
+    /** Index into the roast_levels string array (light to dark), or null when unknown. */
+    val roastLevel: Int?,
     val grams: Int,
     /** LocalDate epoch day, or null when unknown. */
     val roastDate: Long?,

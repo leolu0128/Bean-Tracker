@@ -34,6 +34,14 @@
     <string name="field_variety">品種</string>
     <string name="field_process">處理法</string>
     <string name="field_roast_date">烘焙日期</string>
+    <string name="field_roast_level">烘焙度</string>
+    <string-array name="roast_levels">
+        <item>淺焙</item>
+        <item>淺中焙</item>
+        <item>中焙</item>
+        <item>中深焙</item>
+        <item>深焙</item>
+    </string-array>
     <string name="field_grams">剩餘克數 (g)</string>
     <string name="multi_hint">按 Enter 加入，配方豆可加入多個</string>
     <string name="name_or_country_hint">品名或國家至少填一項</string>

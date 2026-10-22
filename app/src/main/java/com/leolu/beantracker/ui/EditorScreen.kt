@@ -8,6 +8,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,6 +34,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -53,6 +56,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -152,6 +156,7 @@ fun EditorScreen(vm: AppViewModel, e: EditorState) {
                 suggestions = suggestions.processes,
                 supportingText = stringResource(R.string.multi_hint),
             )
+            RoastLevelPicker(e.roastLevel) { e.roastLevel = it }
             RoastDateField(e.roastDate, onPick = { pickDate = true }, onClear = { e.roastDate = null })
             OutlinedTextField(
                 value = e.gramsText,
@@ -246,6 +251,28 @@ private fun CoverPicker(vm: AppViewModel, e: EditorState, savedCover: String?) {
                 style = MaterialTheme.typography.bodySmall,
                 color = if (e.coverFailed) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
             )
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun RoastLevelPicker(selected: Int?, onSelect: (Int?) -> Unit) {
+    Column {
+        Text(
+            stringResource(R.string.field_roast_level),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            stringArrayResource(R.array.roast_levels).forEachIndexed { index, label ->
+                FilterChip(
+                    selected = selected == index,
+                    // Tapping the selected level again clears it.
+                    onClick = { onSelect(if (selected == index) null else index) },
+                    label = { Text(label) },
+                )
+            }
         }
     }
 }

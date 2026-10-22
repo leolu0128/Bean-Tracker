@@ -64,6 +64,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -317,7 +318,8 @@ private fun BeanCard(
                         overflow = TextOverflow.Ellipsis,
                     )
                     DetailLine(listOf(if (bean.name.isNotBlank()) countries else "", bean.region, bean.farm))
-                    DetailLine(listOf(bean.variety, bean.processes.joinToString(" / ")))
+                    val roastLevel = bean.roastLevel?.let { stringArrayResource(R.array.roast_levels).getOrNull(it) }
+                    DetailLine(listOf(bean.variety, bean.processes.joinToString(" / "), roastLevel.orEmpty()))
                     bean.roastDate?.let { day ->
                         val age = LocalDate.now().toEpochDay() - day
                         DetailLine(
@@ -418,6 +420,12 @@ private fun FilterSheet(
             Section(R.string.field_roaster, suggestions.roasters, filters.roasters) { filters.copy(roasters = it) }
             Section(R.string.field_country, suggestions.countries, filters.countries) { filters.copy(countries = it) }
             Section(R.string.field_process, suggestions.processes, filters.processes) { filters.copy(processes = it) }
+            val levels = stringArrayResource(R.array.roast_levels)
+            Section(
+                R.string.field_roast_level,
+                levels.toList(),
+                filters.roastLevels.mapNotNull { levels.getOrNull(it) }.toSet(),
+            ) { picked -> filters.copy(roastLevels = picked.map { levels.indexOf(it) }.toSet()) }
             Spacer(Modifier.height(24.dp))
         }
     }

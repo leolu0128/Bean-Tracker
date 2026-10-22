@@ -34,6 +34,14 @@
     <string name="field_variety">Variety</string>
     <string name="field_process">Process</string>
     <string name="field_roast_date">Roast date</string>
+    <string name="field_roast_level">Roast level</string>
+    <string-array name="roast_levels">
+        <item>Light</item>
+        <item>Medium-light</item>
+        <item>Medium</item>
+        <item>Medium-dark</item>
+        <item>Dark</item>
+    </string-array>
     <string name="field_grams">Remaining (g)</string>
     <string name="multi_hint">Press enter to add; add several for blends</string>
     <string name="name_or_country_hint">Fill in a name or at least one country</string>

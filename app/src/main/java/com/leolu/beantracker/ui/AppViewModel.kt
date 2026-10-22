@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.leolu.beantracker.BeanTrackerApp
+import com.leolu.beantracker.R
 import com.leolu.beantracker.data.BeanItem
 import com.leolu.beantracker.data.ThemeMode
 import kotlinx.coroutines.Dispatchers
@@ -26,8 +27,9 @@ data class Filters(
     val roasters: Set<String> = emptySet(),
     val countries: Set<String> = emptySet(),
     val processes: Set<String> = emptySet(),
+    val roastLevels: Set<Int> = emptySet(),
 ) {
-    val count get() = roasters.size + countries.size + processes.size
+    val count get() = roasters.size + countries.size + processes.size + roastLevels.size
 }
 
 data class ListState(
@@ -101,10 +103,11 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         val active = fresh.filter { it.bean.grams > 0 } + order.active.mapNotNull(byId::get)
         val finished = fresh.filter { it.bean.grams == 0 } + order.finished.mapNotNull(byId::get)
         val terms = q.trim().lowercase().split(Regex("\\s+")).filter { it.isNotEmpty() }
+        val levels = getApplication<Application>().resources.getStringArray(R.array.roast_levels)
         ListState(
             loaded = true,
-            active = active.filter { it.matches(terms, f) },
-            finished = finished.filter { it.matches(terms, f) },
+            active = active.filter { it.matches(terms, f, levels) },
+            finished = finished.filter { it.matches(terms, f, levels) },
         )
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, ListState())
 
@@ -205,16 +208,18 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     }
 }
 
-private fun BeanItem.matches(terms: List<String>, f: Filters): Boolean {
+private fun BeanItem.matches(terms: List<String>, f: Filters, levels: Array<String>): Boolean {
     if (f.roasters.isNotEmpty() && roasterName !in f.roasters) return false
     if (f.countries.isNotEmpty() && bean.countries.none { it in f.countries }) return false
     if (f.processes.isNotEmpty() && bean.processes.none { it in f.processes }) return false
+    if (f.roastLevels.isNotEmpty() && bean.roastLevel?.let { it in f.roastLevels } != true) return false
     if (terms.isEmpty()) return true
     val haystack = buildString {
         append(roasterName).append(' ').append(bean.name).append(' ')
         bean.countries.forEach { append(it).append(' ') }
         append(bean.region).append(' ').append(bean.farm).append(' ').append(bean.variety).append(' ')
         bean.processes.forEach { append(it).append(' ') }
+        bean.roastLevel?.let { levels.getOrNull(it) }?.let { append(it) }
     }.lowercase()
     return terms.all { it in haystack }
 }

@@ -18,6 +18,7 @@ class EditorState(val id: Long) {
     val processes = mutableStateListOf<String>()
     var gramsText by mutableStateOf("")
     var roastDate by mutableStateOf<Long?>(null)
+    var roastLevel by mutableStateOf<Int?>(null)
 
     // Text typed into the multi-value fields but not yet turned into a chip.
     var countryDraft by mutableStateOf("")
@@ -51,6 +52,7 @@ class EditorState(val id: Long) {
         farm = farm.trim(),
         variety = variety.trim(),
         processes = processes.toList(),
+        roastLevel = roastLevel,
         grams = gramsText.toIntOrNull() ?: 0,
         roastDate = roastDate,
     )
@@ -70,6 +72,7 @@ class EditorState(val id: Long) {
             farm = b.farm
             variety = b.variety
             processes.addAll(b.processes)
+            roastLevel = b.roastLevel
             gramsText = b.grams.toString()
             roastDate = b.roastDate
         }

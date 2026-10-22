@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.Shader
+import android.os.Looper
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.core.app.ApplicationProvider
@@ -20,6 +21,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import java.io.File
@@ -61,20 +63,32 @@ class ScreenshotTest {
     private fun captureList(name: String, dark: Boolean) {
         val vm = loadSampleData()
         compose.setContent { BeanTrackerTheme(dark) { BeanListScreen(vm) } }
+        waitForData(vm)
         capture(name)
     }
 
     private fun captureEditor(name: String) {
         val vm = loadSampleData()
+        compose.setContent { BeanTrackerTheme(false) { vm.editor?.let { EditorScreen(vm, it) } } }
+        waitForData(vm)
         vm.openEdit(vm.listState.value.active.first { it.bean.countries.size > 1 })
-        compose.setContent { BeanTrackerTheme(false) { EditorScreen(vm, vm.editor!!) } }
         capture(name)
+    }
+
+    /** Room and the view model deliver on the main looper, which Robolectric only runs when asked. */
+    private fun waitForData(vm: AppViewModel) {
+        compose.waitUntil(30_000) {
+            shadowOf(Looper.getMainLooper()).idle()
+            val s = vm.listState.value
+            s.loaded && s.active.size == 4 && vm.roasterCovers.value.size == 3
+        }
     }
 
     private fun capture(name: String) {
         // Covers are decoded asynchronously by Coil; give them time to land.
-        repeat(3) {
+        repeat(4) {
             Thread.sleep(500)
+            shadowOf(Looper.getMainLooper()).idle()
             compose.waitForIdle()
         }
         compose.onRoot().captureRoboImage("../docs/screenshots/$name.png")
@@ -95,6 +109,7 @@ class ScreenshotTest {
             farm: String = "",
             variety: String = "",
             processes: List<String>,
+            roastLevel: Int? = null,
             grams: Int,
             roastedDaysAgo: Long?,
         ) = BeanInput(
@@ -106,6 +121,7 @@ class ScreenshotTest {
             farm = farm,
             variety = variety,
             processes = processes,
+            roastLevel = roastLevel,
             grams = grams,
             roastDate = roastedDaysAgo?.let { today - it },
         )
@@ -114,24 +130,19 @@ class ScreenshotTest {
             // Saved oldest first, since the list shows the most recently used on top.
             repo.save(bean("Little Fox Coffee", "Yunnan Catimor", listOf("China"), "Pu'er", processes = listOf("Honey"), grams = 0, roastedDaysAgo = 40), fox)
             delay(5)
-            repo.save(bean("Hill & Bean", "", listOf("Kenya"), "Nyeri", "Gatomboya", "SL28 / SL34", listOf("Washed"), 120, 18), hill)
+            repo.save(bean("Hill & Bean", "", listOf("Kenya"), "Nyeri", "Gatomboya", "SL28 / SL34", listOf("Washed"), 1, 120, 18), hill)
             delay(5)
-            repo.save(bean("Morning Roasters", "Panama Geisha", listOf("Panama"), "Boquete", "Elida Estate", "Geisha", listOf("Natural"), 35, 7), morning)
+            repo.save(bean("Morning Roasters", "Panama Geisha", listOf("Panama"), "Boquete", "Elida Estate", "Geisha", listOf("Natural"), 0, 35, 7), morning)
             delay(5)
-            repo.save(bean("Little Fox Coffee", "House Blend", listOf("Brazil", "Colombia"), variety = "Bourbon / Caturra", processes = listOf("Natural", "Washed"), grams = 240, roastedDaysAgo = 12), null)
+            repo.save(bean("Little Fox Coffee", "House Blend", listOf("Brazil", "Colombia"), variety = "Bourbon / Caturra", processes = listOf("Natural", "Washed"), roastLevel = 3, grams = 240, roastedDaysAgo = 12), null)
             delay(5)
-            repo.save(bean("Morning Roasters", "Guji Hambela", listOf("Ethiopia"), "Guji", "Hambela", "Heirloom", listOf("Washed"), 200, 10), null)
+            repo.save(bean("Morning Roasters", "Guji Hambela", listOf("Ethiopia"), "Guji", "Hambela", "Heirloom", listOf("Washed"), 1, 200, 10), null)
             delay(5)
             val top = repo.currentItems().first().bean.id
             repo.adjust(top, -15)
         }
 
-        val vm = AppViewModel(app)
-        compose.waitUntil(10_000) {
-            val s = vm.listState.value
-            s.loaded && s.active.size == 4 && vm.roasterCovers.value.size == 3
-        }
-        return vm
+        return AppViewModel(app)
     }
 
     /** A simple gradient cover, standing in for a photo of the bag. */
