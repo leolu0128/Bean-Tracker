@@ -107,7 +107,7 @@ class ScreenshotTest {
             countries: List<String>,
             region: String = "",
             farm: String = "",
-            variety: String = "",
+            varieties: List<String> = emptyList(),
             processes: List<String>,
             roastLevel: Int? = null,
             note: String = "",
@@ -120,7 +120,7 @@ class ScreenshotTest {
             countries = countries,
             region = region,
             farm = farm,
-            variety = variety,
+            varieties = varieties,
             processes = processes,
             roastLevel = roastLevel,
             note = note,
@@ -132,13 +132,13 @@ class ScreenshotTest {
             // Saved oldest first, since the list shows the most recently used on top.
             repo.save(bean("Little Fox Coffee", "Yunnan Catimor", listOf("China"), "Pu'er", processes = listOf("Honey"), grams = 0, roastedDaysAgo = 40), fox)
             delay(5)
-            repo.save(bean("Hill & Bean", "", listOf("Kenya"), "Nyeri", "Gatomboya", "SL28 / SL34", listOf("Washed"), 1, "", 120, 18), hill)
+            repo.save(bean("Hill & Bean", "", listOf("Kenya"), "Nyeri", "Gatomboya", listOf("SL28", "SL34"), listOf("Washed"), 1, "", 120, 18), hill)
             delay(5)
-            repo.save(bean("Morning Roasters", "Panama Geisha", listOf("Panama"), "Boquete", "Elida Estate", "Geisha", listOf("Natural"), 0, "", 35, 7), morning)
+            repo.save(bean("Morning Roasters", "Panama Geisha", listOf("Panama"), "Boquete", "Elida Estate", listOf("Geisha"), listOf("Natural"), 0, "", 35, 7), morning)
             delay(5)
-            repo.save(bean("Little Fox Coffee", "House Blend", listOf("Brazil", "Colombia"), variety = "Bourbon / Caturra", processes = listOf("Natural", "Washed"), roastLevel = 3, note = "Chocolate, nutty — great for espresso", grams = 240, roastedDaysAgo = 12), null)
+            repo.save(bean("Little Fox Coffee", "House Blend", listOf("Brazil", "Colombia"), varieties = listOf("Bourbon", "Caturra"), processes = listOf("Natural", "Washed"), roastLevel = 3, note = "Chocolate, nutty — great for espresso", grams = 240, roastedDaysAgo = 12), null)
             delay(5)
-            repo.save(bean("Morning Roasters", "Guji Hambela", listOf("Ethiopia"), "Guji", "Hambela", "Heirloom", listOf("Washed"), 1, "Jasmine, peach, black tea. 15g : 240ml, 92°C", 200, 10), null)
+            repo.save(bean("Morning Roasters", "Guji Hambela", listOf("Ethiopia"), "Guji", "Hambela", listOf("Heirloom"), listOf("Washed"), 1, "Jasmine, peach, black tea. 15g : 240ml, 92°C", 200, 10), null)
             delay(5)
             val top = repo.currentItems().first().bean.id
             repo.adjust(top, -15)

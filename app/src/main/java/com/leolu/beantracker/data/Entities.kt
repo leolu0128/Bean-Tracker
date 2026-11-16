@@ -28,7 +28,8 @@ data class Bean(
     val countries: List<String>,
     val region: String,
     val farm: String,
-    val variety: String,
+    /** Several entries for blends or mixed lots; stored in the original "variety" column. */
+    @ColumnInfo(name = "variety") val varieties: List<String>,
     /** Several entries for blends. */
     val processes: List<String>,
     /** Index into the roast_levels string array (light to dark), or null when unknown. */

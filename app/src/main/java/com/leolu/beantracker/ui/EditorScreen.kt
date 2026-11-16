@@ -148,7 +148,14 @@ fun EditorScreen(vm: AppViewModel, e: EditorState) {
             )
             SuggestTextField(e.region, { e.region = it }, stringResource(R.string.field_region), suggestions.regions)
             SuggestTextField(e.farm, { e.farm = it }, stringResource(R.string.field_farm), suggestions.farms)
-            SuggestTextField(e.variety, { e.variety = it }, stringResource(R.string.field_variety), suggestions.varieties)
+            ChipTextField(
+                values = e.varieties,
+                draft = e.varietyDraft,
+                onDraftChange = { e.varietyDraft = it },
+                label = stringResource(R.string.field_variety),
+                suggestions = suggestions.varieties,
+                supportingText = stringResource(R.string.multi_hint),
+            )
             ChipTextField(
                 values = e.processes,
                 draft = e.processDraft,

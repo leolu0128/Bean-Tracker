@@ -320,7 +320,7 @@ private fun BeanCard(
                     )
                     DetailLine(listOf(if (bean.name.isNotBlank()) countries else "", bean.region, bean.farm))
                     val roastLevel = bean.roastLevel?.let { stringArrayResource(R.array.roast_levels).getOrNull(it) }
-                    DetailLine(listOf(bean.variety, bean.processes.joinToString(" / "), roastLevel.orEmpty()))
+                    DetailLine(listOf(bean.varieties.joinToString(" / "), bean.processes.joinToString(" / "), roastLevel.orEmpty()))
                     if (bean.note.isNotBlank()) {
                         Text(
                             bean.note,

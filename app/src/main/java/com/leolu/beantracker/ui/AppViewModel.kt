@@ -89,7 +89,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
             countries = rank(beans.flatMap { it.bean.countries }),
             regions = rank(beans.map { it.bean.region }),
             farms = rank(beans.map { it.bean.farm }),
-            varieties = rank(beans.map { it.bean.variety }),
+            varieties = rank(beans.flatMap { it.bean.varieties }),
             processes = rank(beans.flatMap { it.bean.processes }),
         )
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.Eagerly, Suggestions())
@@ -217,7 +217,8 @@ private fun BeanItem.matches(terms: List<String>, f: Filters, levels: Array<Stri
     val haystack = buildString {
         append(roasterName).append(' ').append(bean.name).append(' ')
         bean.countries.forEach { append(it).append(' ') }
-        append(bean.region).append(' ').append(bean.farm).append(' ').append(bean.variety).append(' ')
+        append(bean.region).append(' ').append(bean.farm).append(' ')
+        bean.varieties.forEach { append(it).append(' ') }
         bean.processes.forEach { append(it).append(' ') }
         bean.roastLevel?.let { levels.getOrNull(it) }?.let { append(it).append(' ') }
         append(bean.note)

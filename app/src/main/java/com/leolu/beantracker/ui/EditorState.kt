@@ -14,7 +14,7 @@ class EditorState(val id: Long) {
     val countries = mutableStateListOf<String>()
     var region by mutableStateOf("")
     var farm by mutableStateOf("")
-    var variety by mutableStateOf("")
+    val varieties = mutableStateListOf<String>()
     val processes = mutableStateListOf<String>()
     var gramsText by mutableStateOf("")
     var roastDate by mutableStateOf<Long?>(null)
@@ -23,6 +23,7 @@ class EditorState(val id: Long) {
 
     // Text typed into the multi-value fields but not yet turned into a chip.
     var countryDraft by mutableStateOf("")
+    var varietyDraft by mutableStateOf("")
     var processDraft by mutableStateOf("")
 
     /** A newly picked image, not yet saved to the roaster. */
@@ -40,6 +41,8 @@ class EditorState(val id: Long) {
     fun commitDrafts() {
         addTo(countries, countryDraft)
         countryDraft = ""
+        addTo(varieties, varietyDraft)
+        varietyDraft = ""
         addTo(processes, processDraft)
         processDraft = ""
     }
@@ -51,7 +54,7 @@ class EditorState(val id: Long) {
         countries = countries.toList(),
         region = region.trim(),
         farm = farm.trim(),
-        variety = variety.trim(),
+        varieties = varieties.toList(),
         processes = processes.toList(),
         roastLevel = roastLevel,
         note = note.trim(),
@@ -72,7 +75,7 @@ class EditorState(val id: Long) {
             countries.addAll(b.countries)
             region = b.region
             farm = b.farm
-            variety = b.variety
+            varieties.addAll(b.varieties)
             processes.addAll(b.processes)
             roastLevel = b.roastLevel
             note = b.note
